@@ -1,12 +1,14 @@
-import React from "react";
+import * as React from "react";
 import { cn } from "../lib/utils";
 
-export function Card({ className, title, description }) {
+const Card = React.forwardRef(({ className, title, description }, ref) => {
   return (
     <div
       className={cn(
-        `p-2 border-lg border-[2px] rounded-lg border-[#0F0F10] bg-[#0B0B0C] ${className}`
+        `p-2 border-lg border-[2px] rounded-lg border-[#0F0F10] bg-[#0B0B0C]`,
+        className
       )}
+      ref={ref}
     >
       <div className="flex items-center gap-2">
         <div className="p-2 rounded-full flex justify-center items-center bg-[#280F42]">
@@ -27,4 +29,6 @@ export function Card({ className, title, description }) {
       <p className="text-[#7F7F87] font-normal text-[16px]">{description}</p>
     </div>
   );
-}
+});
+
+export { Card };
